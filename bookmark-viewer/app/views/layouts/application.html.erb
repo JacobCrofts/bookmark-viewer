@@ -7,8 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav>
+    <% if session[:user_id] %>
+      <%= link_to "Home", :root %>
+      <%= link_to "Logout", :logout %>
+      <%= link_to "Profile", User.find(session[:user_id]) %>
+    <% else %>
+      <%= link_to "Home", :root %>
+      <%= link_to "Login", :login %>
+      <%= link_to "Register", :new_user %>
+    <% end %>
+  </nav>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
