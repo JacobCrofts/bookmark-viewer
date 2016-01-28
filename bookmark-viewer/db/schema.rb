@@ -11,36 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128191627) do
+ActiveRecord::Schema.define(version: 20160128203827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookmarks", force: :cascade do |t|
-    t.string   "name"
-    t.text     "url"
+    t.string   "name",       null: false
+    t.text     "url",        null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "file_uploads", force: :cascade do |t|
+    t.string   "client_file_file_name"
+    t.string   "client_file_content_type"
+    t.integer  "client_file_file_size"
+    t.datetime "client_file_updated_at"
+    t.integer  "user_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "lists", force: :cascade do |t|
-    t.integer  "creator_id"
-    t.string   "name"
+    t.integer  "creator_id", null: false
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "saved_bookmarks", force: :cascade do |t|
-    t.integer  "list_id"
-    t.integer  "bookmark_id"
+    t.integer  "list_id",     null: false
+    t.integer  "bookmark_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "email"
-    t.string   "password_digest"
+    t.string   "username",        null: false
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at",      null: false
