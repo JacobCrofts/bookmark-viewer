@@ -28,6 +28,9 @@ gem 'bcrypt', '~> 3.1.7'
 #paperclip for chrome html bookmark file and image uploads
 gem "paperclip", "~> 4.3"
 
+#nokogiri for parsing html file prior to persisting bookmarks
+gem "nokogiri"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
