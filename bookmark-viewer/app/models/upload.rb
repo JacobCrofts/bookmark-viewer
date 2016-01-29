@@ -1,4 +1,4 @@
-class FileUpload < ActiveRecord::Base
+class Upload < ActiveRecord::Base
   validates :user_id, presence: true
   validates :client_file, presence: true
 

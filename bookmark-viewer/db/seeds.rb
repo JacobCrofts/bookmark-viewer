@@ -1,13 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
-@bookmark_html = "<!DOCTYPE NETSCAPE-Bookmark-file-1>
+bookmark_html = "<!DOCTYPE NETSCAPE-Bookmark-file-1>
 <!-- This is an automatically generated file.
      It will be read and overwritten.
      DO NOT EDIT! -->
@@ -902,4 +893,13 @@
     </DL><p>
 </DL><p>"
 
-ParseUploadedBookmarksFile.call(@bookmark_html)
+user = [User.create(first_name: "lars", last_name: "johnson", username: "lars", email: "lars@lars", password: "lars"),
+User.create(first_name: "jacob", last_name: "crofts", username: "jacob", email: "jacob@jacob", password: "jacob"),
+User.create(first_name: "ronny", last_name: "Ewanek", username: "ronny", email: "ronny@ronny", password: "ronny"),
+User.create(first_name: "kevin", last_name: "corso", username: "kevin", email: "kevin@kevin", password: "kevin"),
+User.create(first_name: "sue", last_name: "sueson", username: "sue", email: "sue@sue", password: "sue"),
+User.create(first_name: "jill", last_name: "jilsen", username: "jill", email: "jill@jill", password: "jill")]
+
+puts user
+
+ParseUploadedBookmarksFile.call(bookmark_html, User.first)

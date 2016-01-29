@@ -23,16 +23,6 @@ ActiveRecord::Schema.define(version: 20160128203827) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "file_uploads", force: :cascade do |t|
-    t.string   "client_file_file_name"
-    t.string   "client_file_content_type"
-    t.integer  "client_file_file_size"
-    t.datetime "client_file_updated_at"
-    t.integer  "user_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
   create_table "lists", force: :cascade do |t|
     t.integer  "creator_id", null: false
     t.string   "name",       null: false
@@ -45,6 +35,16 @@ ActiveRecord::Schema.define(version: 20160128203827) do
     t.integer  "bookmark_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "uploads", force: :cascade do |t|
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
+    t.datetime "upload_updated_at"
+    t.integer  "user_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "users", force: :cascade do |t|

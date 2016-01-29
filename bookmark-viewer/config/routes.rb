@@ -10,6 +10,6 @@ Rails.application.routes.draw do
     resources :bookmarks
   end
 
-  resources :file_upload, :only =>[:new, :create, :destroy]
+  resources :upload, :only =>[:new, :create, :destroy]
 
 end
