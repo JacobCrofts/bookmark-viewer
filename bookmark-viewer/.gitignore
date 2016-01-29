@@ -20,6 +20,13 @@ config/secrets.yml
 /.bundle
 /vendor/bundle
 
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
+/app/models/.DS_Store
+
 # these should all be checked in to normalize the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset
 
@@ -36,3 +43,4 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
