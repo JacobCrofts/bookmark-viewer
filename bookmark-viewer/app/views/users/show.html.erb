@@ -1,3 +1,15 @@
 <h2><%= @user.username %>'s Profile</h2>
 
-<%= link_to "#{@user.username}'s Lists", [@user, :lists] %>
+<h3>Lists</h3>
+
+<ul class="user-lists">
+  <% if @user.lists %>
+    <% @user.lists.each do |list| %>
+      <li><%= link_to list.name, list %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<% if @user.id == current_user.id %>
+  <%= button_to "New List", :new_list, :method => :get %>
+<% end %>
