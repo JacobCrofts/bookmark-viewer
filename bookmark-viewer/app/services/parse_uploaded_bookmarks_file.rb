@@ -11,8 +11,13 @@ class ParseUploadedBookmarksFile
   end
 
   def self.persist_uploaded_bookmarks(zipped2d)
+    current_user = User.first
+    user_first_name = current_user.first_name.capitalize + "'s Bookmarks"
+    list = current_user.lists.create!(name: user_first_name)
+    list.save
     zipped2d.each do |subarray|
-      Bookmark.create(name: subarray[0], url: subarray[1])  ### Must link with UserID
+      list.bookmarks.create!(name: subarray[0], url: subarray[1])
+      # Bookmark.create(name: subarray[0], url: subarray[1])  ### Must link with UserID
     end
   end
 
