@@ -1,24 +1,22 @@
 class FileUploadController < ApplicationController
 
   def new
-    @file = File_upload.new
+    @file_upload = FileUpload.new
   end
 
   def create
-    @file_upload = File_upload.new(file_upload_params)
-    if @file_upload != nil
-      @file_upload.parse_file
-
-
-      flash[:success] = "The Bookmark file was added!"
-      redirect_to root_path
-    else
-      render 'new'
-    end
+    @bookmark_html = params[:file_upload][:client_file_file_name].read
+    ParseFile.call(@bookmark_html)
+    redirect_to new_file_upload_path
   end
 
   def destroy
 
+  end
+
+private
+  def file_upload_params
+    params.require(:file_upload).permit(:client_file_file_name, :client_file_content_type, :client_file_file_size)
   end
 
 end
