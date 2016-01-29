@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
-      @error = "username/password combination does not match"
-      render 'sessions/new'
+      flash[:notice] = "username/password combination does not match"
+      redirect_to :login
     end
   end
 
