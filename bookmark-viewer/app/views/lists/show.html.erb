@@ -1,0 +1,12 @@
+<h2><%= @list.name %></h2>
+
+<ul>
+  <% @list.bookmarks.each do |bookmark| %>
+    <li><%= bookmark.url %></li>
+  <% end %>
+</ul>
+
+<% if current_user.id == @list.creator.id %>
+  <%= button_to "Edit", :edit_list, :method => :get %>
+  <%= button_to "Delete", :list, :method => :delete %>
+<% end %>

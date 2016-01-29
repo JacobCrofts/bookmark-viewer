@@ -22,6 +22,7 @@ class ListsController < ApplicationController
   end
 
   def edit
+    @list = List.find(params[:id])
   end
 
   def show
@@ -29,9 +30,21 @@ class ListsController < ApplicationController
   end
 
   def update
+    @list = List.find(params[:id])
+    if @list.update_attributes(list_params)
+      flash[:notice] = "List name successfully updated!"
+      redirect_to @list
+    else
+      flash[:alert] = "List failed to save"
+      redirect_to @list
+    end
   end
 
   def destroy
+    puts params
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to current_user
   end
 
   def list_params
