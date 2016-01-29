@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
 
   def index
+    @user = User.find(params[:user_id])
   end
 
   def create
@@ -13,6 +14,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    @list = List.find(params[:id])
   end
 
   def update
