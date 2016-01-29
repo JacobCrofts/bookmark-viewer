@@ -6,7 +6,7 @@ class FileUploadController < ApplicationController
 
   def create
     @bookmark_html = params[:file_upload][:client_file_file_name].read
-    ParseFile.call(@bookmark_html)
+    ParseUploadedBookmarksFile.call(@bookmark_html)
     redirect_to new_file_upload_path
   end
 
