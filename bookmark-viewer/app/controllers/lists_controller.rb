@@ -1,4 +1,4 @@
-require 'screencap'
+
 
 class ListsController < ApplicationController
 
@@ -39,6 +39,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @bookmarks = Bookmark.all
   end
 
   def update
