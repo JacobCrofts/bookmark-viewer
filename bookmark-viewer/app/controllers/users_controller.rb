@@ -10,8 +10,8 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to :login
     else
-      @errors = @user.errors.full_messages
-      render 'users/new'
+      flash[:alert] = @user.errors.full_messages.first
+      redirect_to :new_user
     end
   end
 
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :first_name, :last_name)
   end
 
 end
