@@ -10,12 +10,17 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to :login
     else
-      @errors = @user.errors.full_messages
-      render 'users/new'
+      flash[:alert] = @user.errors.full_messages.first
+      redirect_to :new_user
     end
   end
 
   def edit
+    @user = User.find(params[:id])
+    if current_user != @user
+      flash[:alert] = "You can only edit your own profile!"
+      redirect_to current_user
+    end
   end
 
   def show
@@ -23,10 +28,18 @@ class UsersController < ApplicationController
   end
 
   def update
+    if current_user.update_attributes(edit_user_params)
+      flash[:notice] = "Successfully updated profile!"
+      redirect_to current_user
+    end
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :first_name, :last_name)
+  end
+
+  def edit_user_params
+    params.require(:user).permit(:email, :first_name, :last_name)
   end
 
 end

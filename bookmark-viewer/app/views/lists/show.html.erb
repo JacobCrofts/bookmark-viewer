@@ -6,5 +6,7 @@
   <% end %>
 </ul>
 
-<%= button_to "Edit", :edit_list, :method => :get %>
-<%= button_to "Delete", :list, :method => :delete %>
+<% if current_user.id == @list.creator.id %>
+  <%= button_to "Edit", :edit_list, :method => :get %>
+  <%= button_to "Delete", :list, :method => :delete %>
+<% end %>
