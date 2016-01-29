@@ -1,5 +1,9 @@
-<% if @bookmarks %>
-<% @bookmarks.each do |bookmark| %>
+
+<h2><%= @list.name %></h2>
+
+<% if @list.bookmarks %>
+<% @list.bookmarks.each do |bookmark| %>
+
 <a href="<%= bookmark.url %>" target="_blank">
 <li class="scene">
   <div class="movie" onclick="return true">
@@ -20,4 +24,9 @@
 <% end %>
 <% else %>
   <p class="text-warning">Sorry but it doesn't look like you have any bookmarks :(</p>
+<% end %>
+<!-- integrate this with above -->
+<% if current_user.id == @list.creator.id %>
+  <%= button_to "Edit", :edit_list, :method => :get %>
+  <%= button_to "Delete", :list, :method => :delete %>
 <% end %>
