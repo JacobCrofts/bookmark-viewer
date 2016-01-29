@@ -8,9 +8,3 @@
   <%= f.text_field :last_name, placeholder: "last name (optional)" %>
   <%= f.submit "Create" %>
 <% end %>
-
-<% if @errors %>
-  <% @errors.each do |error| %>
-    <%= error %>
-  <% end %>
-<% end %>
