@@ -1,3 +1,5 @@
+require 'screencap'
+
 class ListsController < ApplicationController
 
   def index
