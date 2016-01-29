@@ -11,7 +11,7 @@
     <% if session[:user_id] %>
       <%= link_to "Home", :root %>
       <%= link_to "Logout", :logout %>
-      <%= link_to "Profile", User.find(session[:user_id]) %>
+      <%= link_to "Profile (#{current_user.username})", User.find(session[:user_id]) %>
     <% else %>
       <%= link_to "Home", :root %>
       <%= link_to "Login", :login %>

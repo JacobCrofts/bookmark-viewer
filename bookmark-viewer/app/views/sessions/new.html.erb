@@ -5,11 +5,3 @@
   <%= f.password_field :password, placeholder: "password" %>
   <%= f.submit "Login" %>
 <% end %>
-
-<% if @error %>
-  <div class="alert"><%= @error %></div>
-<% end %>
-
-<% if flash[:notice] %>
-  <div class="alert"><%= flash[:notice] %></div>
-<% end %>
