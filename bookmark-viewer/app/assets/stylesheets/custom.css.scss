@@ -14,4 +14,9 @@ $darkestblue: #0d1321;
 .btn-success {
   background-color: $darkblue;
   border-color: $darkblue;
+  &:hover {
+    background-color: $lightblue;
+    border-color: $lightblue;
+    @include transition(0.5s);
+  }
 }
