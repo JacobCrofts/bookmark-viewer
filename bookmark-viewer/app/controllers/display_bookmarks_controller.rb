@@ -1,0 +1,2 @@
+class DisplayBookmarksController < ApplicationController
+end
