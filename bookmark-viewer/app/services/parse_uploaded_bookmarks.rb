@@ -1,6 +1,6 @@
 include CurrentUserHelper
 
-class ParseUploadedBookmarksFile
+class ParseUploadedBookmarks
 
   def self.call(file, user)
     books = Nokogiri::HTML(file)
