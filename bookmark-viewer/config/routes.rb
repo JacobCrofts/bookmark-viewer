@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   root 'home#index'
-  get '/login' => 'sessions#new', as: 'login'
-  post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy', as: 'logout'
 
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
+
+
+
+  get '/sessions' => 'sessions#show'
   resources :users, :except => [:index, :destroy]
 
   resources :lists, :except => [:index] do
