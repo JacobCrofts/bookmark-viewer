@@ -31,23 +31,25 @@
               <li><%= link_to "Register", :new_user %></li>
           <% end %>
           </ul>
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <%= form_for :user, html: {id: "login-form", class: "navbar-form navbar-right" } do |f| %>
-              <%= f.text_field :username, placeholder: "username", class: "form-control" %>
-            </div>
-            <div class="form-group">
-              <%= f.password_field :password, placeholder: "password", class: "form-control" %>
-            </div>
-            <%= f.submit "Login", class: "btn btn-success" %>
-          </form>
+
+            <form class="navbar-form navbar-right">
+              <div class="form-group">
+                <%= form_for :user, class: "navbar-form navbar-right"  do |f| %>
+                <%= f.text_field :username, placeholder: "username", class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <%= f.password_field :password, placeholder: "password", class: "form-control" %>
+              </div>
+              <%= f.submit "Login", class: "btn btn-success" %>
+            </form>
+
             <% if flash[:notice] %>
               <%= flash[:notice] %>
             <% end %>
             <% if flash[:alert] %>
                 <%= flash[:alert] %>
             <% end %>
-          <% end %>
+          <% end %><!--ends form -->
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
