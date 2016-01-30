@@ -19,6 +19,13 @@
 *, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
 body {
+  padding-top: 60px;
+}
+
+/*=======
+styling for boxes on lists page
+=========*/
+body {
   background: #0D1321;
   font-family: 'Lato', Arial, sans-serif;
   color: #fff;
