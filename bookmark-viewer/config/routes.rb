@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
+
+
+
   get '/sessions' => 'sessions#show'
   resources :users, :except => [:index, :destroy]
 

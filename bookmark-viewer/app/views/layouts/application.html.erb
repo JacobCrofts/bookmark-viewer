@@ -24,24 +24,30 @@
           <ul class="nav navbar-nav">
             <% if session[:user_id] %>
               <li><%= link_to "Home", :root %></li>
-              <li> <%= link_to "Logout", :logout %></li>
+              <li> <%= link_to "Logout", logout_path, method: "delete" %></li>
               <li><%= link_to "Profile (#{current_user.username})", User.find(session[:user_id]) %></li>
+            </ul>
             <% else %>
-              <li><%= link_to "Home", :root %></li>
-              <li><%= link_to "Register", :new_user %></li>
-          <% end %>
-          </ul>
 
-            <form class="navbar-form navbar-right">
-              <div class="form-group">
-                <%= form_for :user, class: "navbar-form navbar-right"  do |f| %>
-                <%= f.text_field :username, placeholder: "username", class: "form-control" %>
-              </div>
-              <div class="form-group">
-                <%= f.password_field :password, placeholder: "password", class: "form-control" %>
-              </div>
-              <%= f.submit "Login", class: "btn btn-success" %>
-            </form>
+            <ul class="nav navbar-nav">
+              <li><%= link_to "Home", :root %></li>
+              <li><%= link_to "Login", :login %> </li>
+              <li><%= link_to "Register", :new_user %></li>
+            </ul>
+
+              <form class="navbar-form navbar-right">
+                  <div class="form-group">
+                    <%= form_for(:session, url: login_path) do |f| %>
+                    <%= f.text_field :username, placeholder: "username", class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.password_field :password, placeholder: "password", class: "form-control" %>
+                  </div>
+                  <%= f.submit "Login", class: "btn btn-success" %>
+                </form>
+                <% end %>
+          <% end %>
+
 
             <% if flash[:notice] %>
               <%= flash[:notice] %>
@@ -49,7 +55,7 @@
             <% if flash[:alert] %>
                 <%= flash[:alert] %>
             <% end %>
-          <% end %><!--ends form -->
+
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
